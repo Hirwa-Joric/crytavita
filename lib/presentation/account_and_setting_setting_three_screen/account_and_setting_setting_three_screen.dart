@@ -1,0 +1,11 @@
+import '../account_and_setting_setting_three_screen/widgets/accountandsettingsettingthree_item_widget.dart';import 'controller/account_and_setting_setting_three_controller.dart';import 'models/accountandsettingsettingthree_item_model.dart';import 'package:crytavita/core/app_export.dart';import 'package:crytavita/widgets/app_bar/appbar_leading_image.dart';import 'package:crytavita/widgets/app_bar/appbar_subtitle.dart';import 'package:crytavita/widgets/app_bar/custom_app_bar.dart';import 'package:crytavita/widgets/custom_search_view.dart';import 'package:flutter/material.dart';class AccountAndSettingSettingThreeScreen extends GetWidget<AccountAndSettingSettingThreeController> {const AccountAndSettingSettingThreeScreen({Key? key}) : super(key: key);
+
+@override Widget build(BuildContext context) { mediaQueryData = MediaQuery.of(context); return SafeArea(child: Scaffold(resizeToAvoidBottomInset: false, appBar: _buildAppBar(), body: Container(width: double.maxFinite, padding: EdgeInsets.symmetric(horizontal: 24.h, vertical: 20.v), child: Column(children: [CustomSearchView(controller: controller.searchController, hintText: "lbl_search".tr), SizedBox(height: 32.v), _buildAccountandSettingSettingThree()])))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar() { return CustomAppBar(height: 51.v, leadingWidth: 48.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 24.h, top: 12.v, bottom: 15.v), onTap: () {onTapArrowLeft();}), centerTitle: true, title: AppbarSubtitle(text: "msg_choose_your_language".tr)); } 
+/// Section Widget
+Widget _buildAccountandSettingSettingThree() { return Expanded(child: Obx(() => ListView.separated(physics: BouncingScrollPhysics(), shrinkWrap: true, separatorBuilder: (context, index) {return SizedBox(height: 24.v);}, itemCount: controller.accountAndSettingSettingThreeModelObj.value.accountandsettingsettingthreeItemList.value.length, itemBuilder: (context, index) {AccountandsettingsettingthreeItemModel model = controller.accountAndSettingSettingThreeModelObj.value.accountandsettingsettingthreeItemList.value[index]; return AccountandsettingsettingthreeItemWidget(model);}))); } 
+
+/// Navigates to the previous screen.
+onTapArrowLeft() { Get.back(); } 
+ }
